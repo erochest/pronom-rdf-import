@@ -30,6 +30,7 @@ def read_input_dirs(dirnames):
                 if ext != '.rdf':
                     continue
                 fn = os.path.join(root, fn)
+                sys.stderr.write('parsing {0}...\n'.format(fn))
                 graph.parse(fn)
     return graph
 
@@ -56,7 +57,9 @@ def index_query(exts):
     for (iri, rows) in itertools.groupby(exts, second):
         rows = list(rows)
         ext  = rows[0][0]
-        index[ext].append(tuples_to_dict(iri, rows))
+        rowd = tuples_to_dict(iri, rows)
+        rowd.setdefault('Extension', ext)
+        index[ext].append(rowd)
 
     return index
 
