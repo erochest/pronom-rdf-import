@@ -1,0 +1,134 @@
+{
+    "met": [
+        {
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/102",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/67",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "FormatName": "Met Metafile",
+            "ProvenanceSourceID": "1",
+            "Extension": "met",
+            "FormatID": "108",
+            "ProvenanceSourceDate": "02 Aug 2005",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        }
+    ],
+    "lli": [
+        {
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/96",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/61",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "FormatName": "AutoCAD Landscape Library",
+            "ProvenanceSourceID": "1",
+            "Extension": "lli",
+            "FormatID": "102",
+            "ProvenanceSourceDate": "02 Aug 2005",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        }
+    ],
+    "lin": [
+        {
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/95",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/60",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "FormatName": "AutoCAD Linetype Definition File",
+            "ProvenanceSourceID": "1",
+            "Extension": "lin",
+            "FormatID": "101",
+            "ProvenanceSourceDate": "02 Aug 2005",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        }
+    ],
+    "lsp": [
+        {
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/98",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/63",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "FormatName": "AutoLISP File",
+            "ProvenanceSourceID": "1",
+            "Extension": "lsp",
+            "FormatID": "104",
+            "ProvenanceSourceDate": "02 Aug 2005",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        }
+    ],
+    "mcw": [
+        {
+            "InvarianceText": "Unchanged content",
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/99",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/64",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "Version": "4.0",
+            "FormatName": "Microsoft Word for  Macintosh Document",
+            "ProvenanceSourceID": "1",
+            "FormatVersion": "4.0",
+            "Extension": "mcw",
+            "FormatID": "105",
+            "ProvenanceSourceDate": "23 Sep 2003",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        },
+        {
+            "InvarianceText": "Unchanged content",
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/100",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/65",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "Version": "5.0",
+            "FormatName": "Microsoft Word for  Macintosh Document",
+            "ProvenanceSourceID": "1",
+            "FormatVersion": "5.0",
+            "Extension": "mcw",
+            "FormatID": "106",
+            "ProvenanceSourceDate": "23 Sep 2003",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        }
+    ],
+    "las": [
+        {
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/94",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/59",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "FormatName": "AutoCAD Last Saved Layer State",
+            "ProvenanceSourceID": "1",
+            "Extension": "las",
+            "FormatID": "100",
+            "ProvenanceSourceDate": "02 Aug 2005",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        }
+    ],
+    "mdb": [
+        {
+            "ExternalSignature": "http://nationalarchives.gov.uk/pronom/ExternalSignature/101",
+            "FileFormatIdentifier": "http://nationalarchives.gov.uk/pronom/Identifier/x-fmt/66",
+            "ProvenanceName": "Digital Preservation Department / The National Archives",
+            "LastUpdatedDate": "02 Aug 2005",
+            "Version": "2.0",
+            "FormatName": "Microsoft Access Database",
+            "ProvenanceSourceID": "1",
+            "FormatVersion": "2.0",
+            "Extension": "mdb",
+            "FormatID": "107",
+            "ProvenanceSourceDate": "02 Aug 2005",
+            "FormatDescription": "Outline record only",
+            "BinaryFileFormat": "Text"
+        }
+    ],
+    "mnc": [
+        {
+            "Extension": "mnc",
+            "BinaryFileFormat": "Text"
+        }
+    ]
+}
