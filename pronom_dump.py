@@ -58,6 +58,7 @@ def index_query(exts):
         rows = list(rows)
         ext  = rows[0][0]
         rowd = tuples_to_dict(iri, rows)
+        rowd.setdefault('IRI', iri)
         rowd.setdefault('Extension', ext)
         index[ext].append(rowd)
 
