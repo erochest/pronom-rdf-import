@@ -1,55 +1,50 @@
 #!/usr/bin/env python
 
-# TODO: This should just take the output Turtle and transform it into the
-# output JSON.
+"""\
+This takes a Turtle file containing the output of the PRONOM and UDFR datasets
+and dumps out the file types, extensions, and risks to a JSON file.
+
+The query itself to generate the data is in a secondary SPARQL file, which is
+specified on the command line and defaults to `query.sparql`.
+
+"""
 
 
 import argparse
 import collections
-import itertools
 import json
 import operator
-import os
-import re
 import sys
 
-from merge_graphs import read_input_dirs
+import rdflib
 
 
-QUERY_FILE    = 'query.sparql'
-RE_FINAL_NAME = re.compile(r'\w+$')
+QUERY_FILE = 'query.sparql'
 
 
 second = operator.itemgetter(1)
 
 
-def tuples_to_dict(id_uri, rows, name_re=RE_FINAL_NAME):
+def tuple_to_dict(row):
     """\
-    Convert a set of tuple that share a subject IRI into a sequence of dicts.
+    Convert a tuple into a dict.
     """
-    accum = {}
+    (format, name, ext, risk) = row
+    obj = {
+        'format': format,
+        'name': name,
+        'ext': ext,
+        'risk': risk,
+        }
+    return obj
 
-    for (_, _, p, o) in rows:
-        match = name_re.search(p)
-        name = match.group(0) if match is not None else p
-        accum[name] = o
 
-    return accum
-
-
-def index_query(exts):
+def index_query(rows):
     """This indexes the result rows by the first item, grouping by the second."""
     index = collections.defaultdict(list)
-
-    exts.sort(key=second)
-    for (iri, rows) in itertools.groupby(exts, second):
-        rows = list(rows)
-        ext  = rows[0][0]
-        rowd = tuples_to_dict(iri, rows)
-        rowd.setdefault('IRI', iri)
-        rowd.setdefault('Extension', ext)
-        index[ext].append(rowd)
-
+    for row in rows:
+        ext = row['ext']
+        index[ext].append(row)
     return index
 
 
@@ -59,23 +54,36 @@ def parse_args(args):
         )
 
     parser.add_argument(
-        'input_dirs', metavar='INPUT_DIRS', type=str, default='.', nargs='*',
-        help='The directory of input RDF/XML files to walk (default={0}).'.format(
-            os.getcwd(),
-            )
+        '-i', '--input', metavar='TURTLE', type=str, default=None,
+        dest='input',
+        help='The input Turtle file to read to generate the JSON from.'
+        )
+    parser.add_argument(
+        '-q', '--query', metavar='SPARQL', type=str, default=QUERY_FILE,
+        dest='query',
+        help='The SPARQL file to select and project the data from the input. '
+             '(default is "{0}".)'.format(QUERY_FILE)
         )
 
-    return parser.parse_args(args)
+    opts = parser.parse_args(args)
+    if opts.input is None:
+        raise argparse.ArgumentTypeError('You must specify an input source.')
+
+    return opts
 
 
 def main(args=None):
     args = sys.argv[1:] if args is None else args
     opts = parse_args(args)
 
-    graph = read_input_dirs(opts.input_dirs)
-    with open(QUERY_FILE) as f:
-        exts = list(graph.query(f.read()))
-    index = index_query(exts)
+    graph = rdflib.Graph()
+    graph.parse(opts.input, format='turtle')
+
+    with open(opts.query) as f:
+        rows = list(graph.query(f.read()))
+
+    index = index_query( tuple_to_dict(row) for row in rows )
+
     sys.stdout.write(json.dumps(index))
 
 

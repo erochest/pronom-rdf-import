@@ -1,12 +1,17 @@
-PREFIX p: <http://pronom.nationalarchives.gov.uk/#>
-PREFIX p2: <http://nationalarchives.gov.uk/pronom/ExternalSignature/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX udfr:           <http://udfr.org/onto#>
+PREFIX p2-additional:  <http://p2-registry.ecs.soton.ac.uk/ontology/#>
 
-SELECT ?e ?s ?p ?o
+SELECT ?format ?fmtname ?ext ?risk
 WHERE {
-    ?s p:ExternalSignature ?es ;
-       ?p ?o .
-    ?es p:Signature ?e .
+  ?format a udfr:FileFormat ;
+	  rdfs:label ?fmtname ;
+	  udfr:signature ?signature .
+  ?signature udfr:signatureValue ?ext .
+  OPTIONAL {
+    ?format ?a ?b .
+    ?b p2-additional:DefaultRiskLevel ?risk .
+  }
 }
-ORDER BY ?s ?p
+
