@@ -1,6 +1,17 @@
 #!/usr/bin/env python
 
 
+"""\
+This pages through the data on the Unified Digital Format Registry
+(http://udfr.org/). It downloads each page and loads the search results into a
+graph that it dumps out to the screen as Turtle.
+
+**NB: The download feature on this has not been tested. However, the result
+parsing has been run on downloads saved to the disk.**
+
+"""
+
+
 import datetime
 import math
 import sys

@@ -1,6 +1,16 @@
 #!/usr/bin/env python
 
 
+"""\
+This reads from one or more Turtle files to pre-populate a graph and then walks
+a directory reading all the RDF/XML files in the directory and merging their
+triples into the graph. It then dumps the final graph out to STDOUT as Turtle.
+
+This is to merge the output of the `download.py` script with the PRONOM data
+found in the repository https://github.com/mpollice/LinkedOpenData.git.
+
+"""
+
 import argparse
 import os
 import sys
