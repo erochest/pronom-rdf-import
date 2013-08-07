@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# TODO: This should just take the output Turtle and transform it into the
+# output JSON.
+
 
 import argparse
 import collections
@@ -10,7 +13,7 @@ import os
 import re
 import sys
 
-import rdflib
+from merge_graphs import read_input_dirs
 
 
 QUERY_FILE    = 'query.sparql'
@@ -18,21 +21,6 @@ RE_FINAL_NAME = re.compile(r'\w+$')
 
 
 second = operator.itemgetter(1)
-
-
-def read_input_dirs(dirnames):
-    """Return a Graph created from the RDF files in all directory trees. """
-    graph = rdflib.Graph()
-    for dirname in dirnames:
-        for (root, dirs, files) in os.walk(dirname):
-            for fn in files:
-                ext = os.path.splitext(fn)[1]
-                if ext != '.rdf':
-                    continue
-                fn = os.path.join(root, fn)
-                sys.stderr.write('parsing {0}...\n'.format(fn))
-                graph.parse(fn)
-    return graph
 
 
 def tuples_to_dict(id_uri, rows, name_re=RE_FINAL_NAME):
