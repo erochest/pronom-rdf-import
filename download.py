@@ -12,6 +12,7 @@ parsing has been run on downloads saved to the disk.**
 """
 
 
+import codecs
 import datetime
 import math
 import sys
@@ -133,7 +134,7 @@ def main():
     g = Graph()
 
     template = None
-    with open(QUERY_FILE) as f:
+    with codecs.open(QUERY_FILE, encoding='UTF8') as f:
         template = pystache.parse(f.read())
 
     offset = 0
