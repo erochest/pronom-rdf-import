@@ -12,6 +12,7 @@ specified on the command line and defaults to `query.sparql`.
 
 import argparse
 import collections
+import itertools
 import json
 import operator
 import sys
@@ -45,8 +46,8 @@ def index_query(rows, field=INDEX_BY):
     """This indexes the result rows by the first item, grouping by the second."""
     index = collections.defaultdict(list)
     for row in rows:
-        ext = row[field]
-        index[ext].append(row)
+        key = row[field].split(';')[0].strip()
+        index[key].append(row)
     return index
 
 
@@ -82,9 +83,15 @@ def main(args=None):
     graph.parse(opts.input, format='turtle')
 
     with open(opts.query) as f:
-        rows = list(graph.query(f.read()))
+        rows = [
+            tuple_to_dict(row)
+            for row in graph.query(f.read())
+            ]
 
-    index = index_query( tuple_to_dict(row) for row in rows )
+    index = {
+        'by_ext'  : index_query(rows, 'ext'),
+        'by_mime' : index_query(rows, 'mime'),
+        }
 
     sys.stdout.write(json.dumps(index))
 
