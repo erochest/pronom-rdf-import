@@ -3,12 +3,14 @@ PREFIX rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX udfr:           <http://udfr.org/onto#>
 PREFIX p2-additional:  <http://p2-registry.ecs.soton.ac.uk/ontology/#>
 
-SELECT ?format ?fmtname ?ext ?risk
+SELECT ?format ?fmtname ?ext ?mime ?risk
 WHERE {
   ?format a udfr:FileFormat ;
 	  rdfs:label ?fmtname ;
+      udfr:mimeType ?m ;
 	  udfr:signature ?signature .
   ?signature udfr:signatureValue ?ext .
+  ?m rdfs:label ?mime .
   OPTIONAL {
     ?format ?a ?b .
     ?b p2-additional:DefaultRiskLevel ?risk .

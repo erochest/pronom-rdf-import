@@ -20,6 +20,7 @@ import rdflib
 
 
 QUERY_FILE = 'query.sparql'
+INDEX_BY   = 'mime'
 
 
 second = operator.itemgetter(1)
@@ -29,21 +30,22 @@ def tuple_to_dict(row):
     """\
     Convert a tuple into a dict.
     """
-    (format, name, ext, risk) = row
+    (format, name, ext, mime, risk) = row
     obj = {
-        'format': format,
-        'name': name,
-        'ext': ext,
-        'risk': risk,
+        'format' : format,
+        'name'   : name,
+        'ext'    : ext,
+        'mime'   : mime,
+        'risk'   : risk,
         }
     return obj
 
 
-def index_query(rows):
+def index_query(rows, field=INDEX_BY):
     """This indexes the result rows by the first item, grouping by the second."""
     index = collections.defaultdict(list)
     for row in rows:
-        ext = row['ext']
+        ext = row[field]
         index[ext].append(row)
     return index
 
