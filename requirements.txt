@@ -7,5 +7,5 @@ pyparsing==1.5.7
 pystache==0.5.3
 pytz==2013b
 rdflib==4.0.1
-requests==1.2.3
+requests==2.20.0
 wsgiref==0.1.2
