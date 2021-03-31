@@ -2,7 +2,7 @@ Pygments==1.6
 SPARQLWrapper==1.5.2
 html5lib==0.95
 isodate==0.4.9
-lxml==4.6.2
+lxml==4.6.3
 pyparsing==1.5.7
 pystache==0.5.3
 pytz==2013b
